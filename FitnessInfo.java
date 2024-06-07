@@ -3,24 +3,29 @@ import java.util.Scanner;
 public class FitnessInfo {
     public static void main(String[] args) 
     {
+        // welcome message
         System.out.println("-----------------------------------");
         System.out.println("Welcome to FitnessInfo.org");
         System.out.println("---------------------------------");
 
         Scanner scan = new Scanner(System.in);
 
+        // user input
         int gender = getGender(scan);
         int age = getAge(scan);
         int activity = getActivityLevel(scan);
         double heightInInches = getHeight(scan);
         double weightInLbs = getWeight(scan);
 
+        // calculations and conversions
         double activityFactor = getActivityFactor(activity);
         double tdee = calculateAndDisplayInfo(age, gender, weightInLbs, heightInInches, activityFactor);
 
+        // user choice for weight loss/gain
         int choice = getUserChoice(scan);
         displayCalorieInfo(tdee, choice);
 
+        // goodbye message
         System.out.println("-----------------------------------");
         System.out.println("Thank you for using FitnessInfo.org");
         System.out.println("-----------------------------------");
@@ -100,22 +105,28 @@ public class FitnessInfo {
 
     public static double calculateAndDisplayInfo(int age, int gender, double weightInLbs, double heightInInches, double activityFactor) 
     {
+        // unit conversions
         double weightInKg = weightInLbs / 2.2;
         double heightInCm = heightInInches * 2.54;
         double heightInM = heightInCm / 100;
-        double bmi = weightInKg / Math.pow(heightInM, 2); // body mass index calculation
+
+        // body mass index calculation
+        double bmi = weightInKg / Math.pow(heightInM, 2); 
+
         double bmr;
-        if (gender == 1) // men
+        if (gender == 1) // bmr formula for men
         {
             bmr = (10 * weightInKg) + (6.25 * heightInCm) - (5 * age) + 5;
         } 
-        else // women
+        else // bmr formula for women
         { 
             bmr = (10 * weightInKg) + (6.25 * heightInCm) - (5 * age) - 161;
         }
-        double tdee = bmr * activityFactor;
 
-        System.out.println("-----------------------------------");
+        // tdee formula
+        double tdee = bmr * activityFactor; 
+
+        System.out.println("-----------------------------------"); // info screen
         System.out.println("User Info: ");
         System.out.printf("Body Mass Index (BMI): %.1f", bmi);
         if (bmi < 18.5) {
@@ -146,7 +157,7 @@ public class FitnessInfo {
 
     public static void displayCalorieInfo(double tdee, int choice) 
     {
-        System.out.println("-----------------------------------");
+        System.out.println("-----------------------------------"); // results screen
         System.out.println("Results:");
         System.out.println("Maintain weight: " + Math.round(tdee) + " calories/day");
 
