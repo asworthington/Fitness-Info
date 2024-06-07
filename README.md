@@ -18,3 +18,7 @@ FitnessInfo.org is a Java application that calculates and provides personalized 
 - Activity levels are categorized as follows: 1 for sedentary, 2 for slightly active, 3 for moderately active, 4 for very active, and 5 for extremely active.
 - The program assumes a basic understanding of fitness and nutrition concepts, such as BMI, BMR, and TDEE.
 - Always consult with a healthcare provider or a professional before making significant changes to your diet or exercise regimen based on these recommendations.
+
+## Author
+
+- **Development:** Alex Worthington
